@@ -26,3 +26,14 @@ This is a starter Android Studio project with:
 - Accessibility text is incomplete for canvas/video/game surfaces and apps that block accessibility. OCR here uses ML Kit's Latin recognizer; Bengali text recognition is not assured. Gemini vision may describe visible pixels, but it can still make mistakes.
 - Voice questions are analyzed using the most recently captured frame plus accessible UI text. The code does not continuously record the microphone; press the voice button to speak. It does not predict crash-game results or give a guaranteed cash-out time. Such outcomes cannot be reliably inferred from a screenshot.
 - This is a starter project, not a security-reviewed production release. Review current Android SDK, Gemini API, and Google Play policies before distribution.
+
+## GitHub Actions: Build APK automatically
+
+This project includes `.github/workflows/build.yml`. After you upload/extract the **project files** into a GitHub repository and commit them to `main` or `master`, GitHub Actions attempts to build a debug APK. You can also run it manually from the repository's **Actions** tab using **Build AIBotGame APK** → **Run workflow**.
+
+When the workflow succeeds, open that run and download the `AIBotGame-Debug-APK` artifact. It is a ZIP containing the debug APK; extract it on your phone to get the `.apk` file.
+
+Important:
+- Upload the extracted project contents, not only this project ZIP, to GitHub. The workflow file must be at `.github/workflows/build.yml` in the repository.
+- A successful CI build is not the same as testing the app on a physical device. This source has not been verified by a successful Android build in this environment.
+- The APK is a debug build, not a Play Store release. Live screen capture still requires Android's explicit screen-capture consent.
